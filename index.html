@@ -10,6 +10,9 @@
 
 <body>
 
+    <div>Di Hola </div>
+    <div id="conf"></div>
+
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script> -->
     <script src="script.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
@@ -17,17 +20,20 @@
         if (annyang) {
             // Add our commands to annyang
             annyang.addCommands({
-                'hola': function () { alert('Hello world!'); }
+                'hola': function () { alert('Hello world!'); },
+                'Soy el mejor del mundo': function(e) { alert('Hola bacalao' + e); }
             });
 
             annyang.addCallback('result', function(e) {
                 console.log('result', e);
             });
 
-            annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+            annyang.addCallback('resultMatch', function(userSaid, commandText, phrases, confidences) {
                 console.log(userSaid); // sample output: 'hello'
                 console.log(commandText); // sample output: 'hello (there)'
                 console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+                console.log(confidences);
+                document.getElementById('conf').innerHTML = confidences[0];
             });
 
             // Tell KITT to use annyang

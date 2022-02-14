@@ -118,7 +118,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }
   };
 
-  var parseResults = function parseResults(results) {
+  var parseResults = function parseResults(results, confidences = []) {
     invokeCallbacks(callbacks.result, results);
     var commandText;
     // go over each of the 5 results and alternative results received (we have set maxAlternatives to 5 above)
@@ -143,7 +143,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           }
           // execute the matched command
           currentCommand.callback.apply(this, parameters);
-          invokeCallbacks(callbacks.resultMatch, commandText, currentCommand.originalPhrase, results);
+          invokeCallbacks(callbacks.resultMatch, commandText, currentCommand.originalPhrase, results, confidences);
           return;
         }
       }
@@ -629,12 +629,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         // Map the results to an array
         var SpeechRecognitionResult = event.results[event.resultIndex];
         var results = [];
+        var confidences = [];
         for (var k = 0; k < SpeechRecognitionResult.length; k++) {
           results[k] = SpeechRecognitionResult[k].transcript;
-          console.log(SpeechRecognitionResult[k].confidence);
+          confidences[k] = SpeechRecognitionResult[k].confidence;
         }
 
-        parseResults(results);
+        parseResults(results, confidences);
       };
 
       // build commands list
