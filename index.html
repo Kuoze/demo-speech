@@ -33,10 +33,9 @@
     <script>
         if (annyang) {
             // Add our commands to annyang
-            annyang.addCommands({
-                'hola': function () { alert('Buenas, ¿Qué tal?'); },
-                'Hello I"m the best': function () { alert('Sure ¬¬'); }
-            });
+            const commands = {'hola' : function() { alert('Buenas, ¿Qué tal?')}, 'Hello I"m the best': function () { alert('Sure ¬¬')}};
+
+            annyang.addCommands(commands);
 
             annyang.addCallback('result', function (e) {
                 console.log('result', e);
