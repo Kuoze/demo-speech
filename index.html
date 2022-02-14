@@ -17,7 +17,7 @@
         <select class="form-select bg-secondary text-light mt-2" id="select_dialect"></select>
     </div>
     <p class="text-light">Di: 'Hola', a ver que pasa ^^ </p>
-    <p class="text-light">O di: 'Hello, I'm the best!'</p>
+    <p class="text-light">O di: 'Hello, I am the best!'</p>
 
     <div id="conf" class="text-light"></div>
 
@@ -33,11 +33,11 @@
     <script>
         if (annyang) {
             // Add our commands to annyang
-            const commands = {'hola' : function() { alert('Buenas, ¿Qué tal?')}, 'Hello I"m the best': function () { alert('Sure ¬¬')}};
+            const commands = {'hola' : function() { alert('Buenas, ¿Qué tal?')}, 'Hello I am the best': function () { alert('Sure ¬¬')}};
             const commands2 = {'fluffy' : function() { alert('Fluffy')}};
             annyang.addCommands(commands);
             annyang.addCommands(commands2);
-            
+
             annyang.addCallback('result', function (e) {
                 console.log('result', e);
             });
@@ -66,7 +66,8 @@
             console.log(document.querySelector("#select_dialect").value);
             annyang.setLanguage(document.querySelector("#select_dialect").value);
 
-            annyang.start({ autoRestart: false, continuous: true });
+            //annyang.start({ autoRestart: true, continuous: true });
+            annyang.start();
             document.querySelector("#status").style.display = "block";
             document.getElementById('start').disabled = true;
         });
