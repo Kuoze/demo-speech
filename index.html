@@ -34,16 +34,13 @@
         if (annyang) {
             // Add our commands to annyang
             annyang.addCommands({
-                'hola': function () { alert('Hello world!'); },
-                'Soy el mejor del mundo': function (e) { alert('Hola bacalao' + e); }
+                'hola': function () { alert('Buenas, ¿Qué tal?'); },
+                'Soy el mejor del mundo': function () { alert('Hola bacalao'); }
             });
 
             annyang.addCallback('result', function (e) {
                 console.log('result', e);
             });
-
-            console.log(document.querySelector("#select_dialect").value);
-            annyang.setLanguage(document.querySelector("#select_dialect").value);
 
             annyang.addCallback('resultMatch', function (userSaid, commandText, phrases, confidences) {
                 console.log(userSaid); // sample output: 'hello'
@@ -69,7 +66,7 @@
             console.log(document.querySelector("#select_dialect").value);
             annyang.setLanguage(document.querySelector("#select_dialect").value);
 
-            annyang.start({ autoRestart: false, continuous: false });
+            annyang.start({ autoRestart: false, continuous: true });
             document.querySelector("#status").style.display = "block";
             document.getElementById('start').disabled = true;
         });
