@@ -35,7 +35,7 @@
             // Add our commands to annyang
             annyang.addCommands({
                 'hola': function () { alert('Buenas, ¿Qué tal?'); },
-                'Hello, I am the best': function () { alert('Sure ¬¬'); }
+                'Hello I"m the best': function () { alert('Sure ¬¬'); }
             });
 
             annyang.addCallback('result', function (e) {
@@ -76,6 +76,7 @@
             document.querySelector("#status").style.display = "none";
 
             document.getElementById('start').disabled = false;
+            document.getElementById('conf').innerHTML = "";
         });
     </script>
 </body>
