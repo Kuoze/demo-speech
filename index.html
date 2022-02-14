@@ -16,8 +16,8 @@
         <select class="form-select bg-secondary text-light" id="select_language" onchange="updateCountry()"></select>
         <select class="form-select bg-secondary text-light mt-2" id="select_dialect"></select>
     </div>
-    <p class="text-light">Di Hola, a ver que pasa ^^ </p>
-    <p class="text-light">O di 'Soy el mejor del mundo'</p>
+    <p class="text-light">Di 'Hola', a ver que pasa ^^ </p>
+    <p class="text-light">O di 'Hello, I'm the best!'</p>
 
     <div id="conf" class="text-light"></div>
 
@@ -35,7 +35,7 @@
             // Add our commands to annyang
             annyang.addCommands({
                 'hola': function () { alert('Buenas, ¿Qué tal?'); },
-                'Soy el mejor del mundo': function () { alert('Hola bacalao'); }
+                'Hello, I am the best': function () { alert('Sure ¬¬'); }
             });
 
             annyang.addCallback('result', function (e) {
